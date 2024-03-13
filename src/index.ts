@@ -153,3 +153,28 @@ function sumhandle(a: number, b: number, c: number = 0) {
   //可选参数在前面无意义，因此要放在末尾
   return a + b + c
 }
+
+// 拓展类型-枚举
+//字面量类型的问题
+//得把逻辑含义和真实值区分开来,不然
+/* type Genderr = 'shuige' | 'meinv'
+let genderr: Genderr
+genderr = 'shuige'
+genderr = 'meinv' */
+// 枚举
+enum Genderr {
+  male = '男',
+  female = '女',
+}
+let genderr: Genderr
+genderr = Genderr.male
+genderr = Genderr.female
+
+enum Level {
+  level1 = 1,
+  level2,
+  level3,
+}
+let level: Level = Level.level1
+level = 3 //被数字枚举约束的变量，可以直接被赋值为数字, 有会导致有问题，一般不推荐这样做
+console.log(level)

@@ -4,7 +4,7 @@
     "target": "es2016", //编译目标代码的版本标准
     "module": "commonjs", //模块化标准
     "lib": ["es2016"], //执行环境
-    "strictNullChecks": true,
+    "strictNullChecks": true, //类型检查 严格模式
     "outDir": "./dist" //指定编译后的文件存放位置
   },
   "include": ["./src"] //指定编译哪些文件

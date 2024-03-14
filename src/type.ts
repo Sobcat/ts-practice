@@ -1,7 +1,14 @@
 import { Color, Mark } from './enum'
 
-export type NormalCard = {
+// export type Deck = (NormalCard | Joker)[]
+export type Deck = Card[] //类型兼容性
+export interface Card {
+  getString(): string
+}
+export interface NormalCard extends Card {
   color: Color
   mark: Mark
 }
-export type Deck = NormalCard[]
+export interface Joker extends Card {
+  type: 'big' | 'small'
+}

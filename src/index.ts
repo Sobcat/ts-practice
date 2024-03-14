@@ -1,3 +1,5 @@
+import * as Obj from './myModule'
+
 // let name:string
 // name = "333"
 function add(a: number, b: number) {
@@ -365,3 +367,18 @@ function sumQH(numbers: number[], callback: Condition) {
   return s
 }
 const resultQH = sumQH([1, 2, 3], n => n % 2 !== 0)
+
+//模块化
+// Name() //可快速修复使用，默认导出不行
+Obj.Name()
+//esModuleInterop
+// import fs from 'fs' //module.exports={}
+// fs.readPe()
+// import { readPe } from 'fs'
+// readPe()
+// import * as fs from 'fs'
+//如何在 TS 中书写 commonjs 的导入导出
+// const mymodule = require('./myModule') //原始写法，但无法获取类型检查
+//改成
+// import myM from './myModule'
+// import mymodule = require('./myModule')

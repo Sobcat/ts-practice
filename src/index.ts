@@ -368,7 +368,7 @@ function sumQH(numbers: number[], callback: Condition) {
 }
 const resultQH = sumQH([1, 2, 3], n => n % 2 !== 0)
 
-//模块化
+/* 模块化 */
 // Name() //可快速修复使用，默认导出不行
 Obj.Name()
 //esModuleInterop
@@ -382,3 +382,59 @@ Obj.Name()
 //改成
 // import myM from './myModule'
 // import mymodule = require('./myModule')
+
+/* 类 */
+class C_user {
+  //属性列表
+  readonly id: number //希望赋值之后不再改变
+  name: string
+  loginId: string
+  gender: 'nan' | 'nv' = 'nan'
+  // pid: string | undefined
+  pid?: string
+
+  //假设是私有，外部不能访问
+  private _publicNumber: number = 3 //假设每天可发布的文章数量
+  private _curNumber: number = 0 //假设当前可以发布的数量
+
+  //构造函数 constructor ，new的时候执行
+  // constructor(loginId: string, public name: string) { // public name:string 是一种简写语法糖
+  constructor(loginId: string, name: string, private _age: number) {
+    this.name = name //ts里面，不允许这样动态增加属性
+    this.loginId = loginId
+    // this.gender = gender
+    this.id = Math.random()
+  }
+
+  publish(title: string) {
+    if (this._curNumber < this._publicNumber) {
+      console.log('文章' + title)
+      this._curNumber++
+    } else {
+      console.log('不能发布了')
+    }
+  }
+  addPublishNumber(n: number) {
+    this._curNumber = n
+  }
+
+  //访问器
+  set age(age: number) {
+    if (age < 0) {
+      this._age = 0
+    } else if (age > 200) {
+      this._age = 200
+    } else {
+      this._age = age
+    }
+  }
+  //访问器
+  get age() {
+    return Math.floor(this._age)
+  }
+}
+// const oj: object = { a: 1 }
+// oj.A = 1 //不行的
+const cu = new C_user('1', '2', 3)
+cu.gender = 'nan'
+cu.age

@@ -438,3 +438,42 @@ class C_user {
 const cu = new C_user('1', '2', 3)
 cu.gender = 'nan'
 cu.age
+
+// 泛型
+/* function take(arr, n) {
+  if (n > arr.lenght) {
+    return arr
+  }
+  const newArr: any = []
+  for (let i = 0; i < n; i++) {
+    newArr.push(arr[i])
+  }
+  return newArr
+}
+const na = take([1, 3, 4, 56, 6], 2)
+console.log(na) */
+// []里面时any，元素的具体类型信息已经丢失了
+/* function take(arr: any[], n: number): any[] {
+  if (n > arr.length) {
+    return arr
+  }
+  const newArr: any[] = []
+  for (let i = 0; i < n; i++) {
+    newArr.push(arr[i])
+  }
+  return newArr
+}
+const na = take([1, 3, 4, 56, 6], 2)
+console.log(na) */
+function take<T>(arr: T[], n: number): T[] {
+  if (n > arr.length) {
+    return arr
+  }
+  const newArr: T[] = []
+  for (let i = 0; i < n; i++) {
+    newArr.push(arr[i])
+  }
+  return newArr
+}
+take<string>(['1', '2'], 1)
+take([1, 2], 1) //类型推导

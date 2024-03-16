@@ -547,3 +547,4 @@ function mixinArray<T, K>(arr1: T[], arr2: K[]): (T | K)[] {
   }
   return result
 }
+mixinArray([1, 3, 4], ['a', 'b', 'c'])

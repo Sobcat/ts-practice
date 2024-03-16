@@ -534,3 +534,16 @@ const o = {
   gender: 'nan',
 }
 const nO = nameToUpperCase(o)
+//多泛型
+//将两个数组混合，[1,3,4] ['a','b','c']
+function mixinArray<T, K>(arr1: T[], arr2: K[]): (T | K)[] {
+  if (arr1.length != arr1.length) {
+    throw new Error('两个数组长度不相等')
+  }
+  let result: (T | K)[] = []
+  for (let i = 0; i < arr1.length; i++) {
+    result.push(arr1[i])
+    result.push(arr2[i])
+  }
+  return result
+}

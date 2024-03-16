@@ -440,6 +440,7 @@ cu.gender = 'nan'
 cu.age
 
 // 泛型
+//函数
 /* function take(arr, n) {
   if (n > arr.lenght) {
     return arr
@@ -465,7 +466,7 @@ console.log(na) */
 }
 const na = take([1, 3, 4, 56, 6], 2)
 console.log(na) */
-function take<T>(arr: T[], n: number): T[] {
+function take<T = number>(arr: T[], n: number): T[] {
   if (n > arr.length) {
     return arr
   }
@@ -477,3 +478,59 @@ function take<T>(arr: T[], n: number): T[] {
 }
 take<string>(['1', '2'], 1)
 take([1, 2], 1) //类型推导
+//类型别名
+type callback<T> = (n: T, i?: number) => boolean
+//接口
+interface callback1<T> {
+  (n: T, i?: number): boolean
+}
+function filter<T>(arr: T[], callback: callback<T>): T[] {
+  const nA: T[] = []
+  arr.forEach(v => {
+    if (callback(v)) {
+      nA.push(v)
+    }
+  })
+  return nA
+}
+//类
+/* class ArrayHelper {
+  take<T>(arr: T[], n: number): T[] {
+    const nA: T[] = []
+    return nA
+  }
+} */
+class ArrayHelper<T> {
+  arr: T[]
+  constructor(arr: T[], private name: T) {
+    this.arr = arr
+  }
+  take(arr: T[], n: number): T[] {
+    const nA: T[] = []
+    return nA
+  }
+}
+new ArrayHelper<number>([1], 1)
+//泛型约束
+/**
+ * 将某个对象的name属性的每个单词首字母大写，然后返回该对象
+ */
+type hasNmaeProperty = {
+  name: string
+}
+function nameToUpperCase<T extends hasNmaeProperty>(obj: T): T {
+  //此时T不会报错了，以为不管什么类型传入，都默认T有个name属性了
+  obj.name = obj.name
+    .split(' ')
+    .map(v => {
+      v[0].toUpperCase() + v.substring(1)
+    })
+    .join(' ')
+  return obj
+}
+const o = {
+  name: 'dai guang no',
+  age: 1,
+  gender: 'nan',
+}
+const nO = nameToUpperCase(o)

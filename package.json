@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "nodemon --watch src -e ts --exec ts-node src/index.ts",
+    "dev": "nodemon --watch src/more -e ts --exec ts-node src/more/index.ts",
     "build": "rd /s /q dist & tsc"
   },
   "devDependencies": {

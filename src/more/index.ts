@@ -105,3 +105,21 @@ class Board {
 const b1 = Board.createBoard()
 const b2 = Board.createBoard()
 console.log(b1 === b2)
+
+// 接口拓展
+
+// 索引器
+interface T {
+  [fie: string]: string
+}
+const o: T = {
+  name: '1',
+  age: '1',
+  id: '1',
+}
+class Syq {
+  name: string = ''
+  age: number = 0
+}
+const syq = new Syq()
+// syq['id'] //新版不行了

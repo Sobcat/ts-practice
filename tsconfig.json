@@ -7,14 +7,15 @@
     "lib": ["es2016"], //执行环境
     "outDir": "./dist", //指定编译后的文件存放位置
     "strictNullChecks": true, //类型检查 严格模式
-    "strictPropertyInitialization": true, //更严格的属性检查模式
+    // "strictPropertyInitialization": true, //更严格的属性检查模式
     "removeComments": true, //编译结果移除注释
     "noImplicitUseStrict": false, //编译结果中不包含"use strict"
     "esModuleInterop": true, //启用 es 模块化交互，但是非 es 模块导出
     "noEmitOnError": true, //错误时不生成编译结果
     "moduleResolution": "node", //设置解析模块的模式，现在都默认了呢
     "forceConsistentCasingInFileNames": true, //区别文件名大小写
-    "strict": true
+    "experimentalDecorators": true
+    // "strict": true
   },
   "include": ["./src/more"] //指定编译哪些文件
   // "files": ["./src/index.ts"], //指定编译某个文件

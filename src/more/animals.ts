@@ -28,3 +28,4 @@ animals.forEach(v => {
     // v.singleFire()
   }
 })
+const l = new Lion('da', 0)

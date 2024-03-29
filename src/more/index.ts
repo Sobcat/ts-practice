@@ -123,3 +123,58 @@ class Syq {
 }
 const syq = new Syq()
 // syq['id'] //新版不行了
+
+// this 指向约束
+//
+const u = {
+  name: 'dai',
+  age: 11,
+  sayHello() {
+    console.log(this, this.name)
+  },
+}
+// u.sayHello()
+// const uu = u.sayHello
+// uu()
+//
+class Useru {
+  constructor(public name: string) {}
+  sayHello(this: Useru) {
+    console.log(this, this.name)
+  }
+}
+const us = new Useru('dai')
+// us.sayHello()
+// const uu = us.sayHello
+// uu()
+//
+interface IU {
+  name: string
+  age: number
+  sayHello(this: IU): void
+}
+function sayHello(this: IU) {
+  console.log(this, this.name)
+}
+const uuu: IU = {
+  name: 'dai',
+  age: 11,
+  sayHello() {
+    console.log(this, this.name)
+  },
+}
+// const ux = uuu.sayHello
+// ux()
+
+// 装饰器
+class DDecoretor {
+  constructor(
+    loginId: string, // 必须是3-5字符
+    loginPwd: string, // 必须是6-12字符
+    age: number, // 必须是0-100数字
+    gender: '男' | '女'
+  ) {}
+}
+const du = new DDecoretor('1', '2', 1, '男')
+// 对用户对象进行数据验证
+

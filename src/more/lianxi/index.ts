@@ -3,4 +3,3 @@ class User {
   loginPwd: string
 }
 const u = new User()
-u.loginId

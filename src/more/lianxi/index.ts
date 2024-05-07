@@ -4,3 +4,4 @@ class User {
 }
 const u = new User()
 u.loginId
+u.loginPwd

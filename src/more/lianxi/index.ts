@@ -8,4 +8,5 @@ u.loginPwd
 
 interface U {
   (): void
+  user: string
 }
